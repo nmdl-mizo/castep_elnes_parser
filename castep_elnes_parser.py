@@ -4,7 +4,7 @@ A simple python script for parsing CASTEP (http://www.castep.org/) output files 
 
 This includes some functions for reading .cell, .castep, .bands, and .eels_mat files, calculating excitation energy, and forming core-loss spectra with Gaussian smearing.
 
-Copyright (c) 2021 kiyou, nmdl-mizo
+Copyright (c) 2022 kiyou, nmdl-mizo
 This software is released under the MIT License, see LICENSE.
 
 Note
