@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name='castep_elnes_parser',
@@ -18,4 +18,5 @@ setup(
     ],
     keywords='tools',
     install_requires=["numpy"],
+    py_modules=["castep_elnes_parser"],
 )
