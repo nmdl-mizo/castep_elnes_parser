@@ -16,15 +16,15 @@ This includes some functions for reading .cell, .castep, .bands, and .eels_mat f
 Clone this repository and run `pip install`:
 
 ``` bash
-$ git clone https://github.com/nmdl-mizo/castep_elnes_parser.git
-$ cd castep_elne_parser
-$ pip intall .
+git clone https://github.com/nmdl-mizo/castep_elnes_parser.git
+cd castep_elne_parser
+pip intall .
 ```
 
 or directry run `pip install`:
 
 ``` bash
-$ pip install git+https://github.com/nmdl-mizo/castep_elnes_parser
+pip install git+https://github.com/nmdl-mizo/castep_elnes_parser
 ```
 
 ## Usage
