@@ -1,5 +1,7 @@
 # CASTEP ELNES Parser
 
+[![DOI](https://zenodo.org/badge/433655152.svg)](https://zenodo.org/badge/latestdoi/433655152)
+
 A simple python script for parsing [CASTEP](http://www.castep.org/) output files especially for ELNES calculations.
 
 ## Overview
@@ -71,6 +73,8 @@ case_elnes.bands    case_elnes.eels_mat
 This script is tested on input and output files of CASTEP version 8 and may not be incompatible to other versions.
 
 ## Reference
+
+This code is citable through Zenodo with the following DOI: [![DOI](https://zenodo.org/badge/433655152.svg)](https://zenodo.org/badge/latestdoi/433655152)
 
 In all papers using the CASTEP code, you should cite:
 > "First principles methods using CASTEP",
