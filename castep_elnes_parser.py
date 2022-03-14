@@ -156,9 +156,10 @@ def get_energies(filename_gs, filename_ex, element="C", suffix=":ex", gs_split=-
 
     Parameters
     --------
-    lines : list of str
-        Castep output for a calculation run.
-        Can be obtained by split_castep
+    filename_gs : str
+        path to the .castep file of the ground state
+    filename_ex : str
+        path to the .castep file of the excited state
     element : str, default "C"
         element name. e.g. "C"
     suffix : str, default ":ex"
@@ -328,7 +329,7 @@ def read_bands(filename, output_eV=True):
     --------
     filename : str
         path to the .bands file
-    output_ev : bool, default True
+    output_eV : bool, default True
         whether output energy in eV (True) or hartree (False)
 
     Returns
@@ -520,4 +521,3 @@ def get_smeared_spectrum(energies, sigma=0.3, calc_dir=".", seed_name="case_elne
     sp = np.sum(np.array(sp), axis=(2, 3, 4))
     sp *= 2. / spectrum["num_spins"] # consider spin multiplicity
     return sp
-
