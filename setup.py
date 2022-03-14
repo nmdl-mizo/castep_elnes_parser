@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='castep_elnes_parser',
-    version="1.0.0",
+    version="1.0.1",
     description="A simple python script for parsing CASTEP output files especially for ELNES calculations.",
     long_description="A simple python script for parsing [CASTEP](http://www.castep.org/) output files especially for ELNES calculations. Contains some functions for calculating excitation energies and forming spectra",
     url='https://github.com/nmdl-mizo/castep_elnes_parser',
