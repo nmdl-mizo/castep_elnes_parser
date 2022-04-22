@@ -8,26 +8,23 @@
 
     <title>castep_elnes_parser module &#8212; CASTEP ELNES Parser 1.0.0 documentation</title>
     
-    <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-  
+
     
-    <link rel="stylesheet"
-      href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-  
-    
-      
-  
-    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/pydata-sphinx-theme.css" />
     
-    <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
-  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
@@ -42,7 +39,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -144,7 +141,7 @@
               <div>
                 
   <section id="module-castep_elnes_parser">
-<span id="castep-elnes-parser-module"></span><h1>castep_elnes_parser module<a class="headerlink" href="#module-castep_elnes_parser" title="Permalink to this headline">¶</a></h1>
+<span id="castep-elnes-parser-module"></span><h1>castep_elnes_parser module<a class="headerlink" href="#module-castep_elnes_parser" title="Permalink to this headline">#</a></h1>
 <p>A simple python script for parsing CASTEP (<a class="reference external" href="http://www.castep.org/">http://www.castep.org/</a>) output files especially for ELNES calculations.</p>
 <p>This includes some functions for reading .cell, .castep, .bands, and .eels_mat files, calculating excitation energy, and forming core-loss spectra with Gaussian smearing.</p>
 <p>Copyright (c) 2022 kiyou, nmdl-mizo
@@ -162,7 +159,7 @@ Mizoguchi, T.; Tanaka, I.; Gao, S.-P.; Pickard, C. J.
 </div>
 <dl class="py function">
 <dt class="sig sig-object py" id="castep_elnes_parser.gaussian">
-<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">gaussian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#gaussian"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.gaussian" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">gaussian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#gaussian"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.gaussian" title="Permalink to this definition">#</a></dt>
 <dd><p>gaussian function for smearing</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -184,7 +181,7 @@ Mizoguchi, T.; Tanaka, I.; Gao, S.-P.; Pickard, C. J.
 
 <dl class="py function">
 <dt class="sig sig-object py" id="castep_elnes_parser.get_ae_energy_castep">
-<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">get_ae_energy_castep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">':ex'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#get_ae_energy_castep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.get_ae_energy_castep" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">get_ae_energy_castep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">':ex'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#get_ae_energy_castep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.get_ae_energy_castep" title="Permalink to this definition">#</a></dt>
 <dd><p>get the atomic energy of the all-electron (ae) calculation from .castep output</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -206,7 +203,7 @@ Can be obtained by split_castep</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="castep_elnes_parser.get_coords_cell">
-<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">get_coords_cell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#get_coords_cell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.get_coords_cell" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">get_coords_cell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#get_coords_cell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.get_coords_cell" title="Permalink to this definition">#</a></dt>
 <dd><p>extract species and coordinates from .cell file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -225,7 +222,7 @@ Can be obtained by split_castep</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="castep_elnes_parser.get_energies">
-<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">get_energies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename_gs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename_ex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">':ex'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gs_split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ex_split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#get_energies"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.get_energies" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">get_energies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename_gs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename_ex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">':ex'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gs_split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ex_split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#get_energies"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.get_energies" title="Permalink to this definition">#</a></dt>
 <dd><p>get energies from .castep outputs</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -265,7 +262,7 @@ Mizoguchi, T.; Tanaka, I.; Gao, S.-P.; Pickard, C. J.     “First-Principles Ca
 
 <dl class="py function">
 <dt class="sig sig-object py" id="castep_elnes_parser.get_final_energy_castep">
-<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">get_final_energy_castep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#get_final_energy_castep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.get_final_energy_castep" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">get_final_energy_castep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#get_final_energy_castep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.get_final_energy_castep" title="Permalink to this definition">#</a></dt>
 <dd><p>get the final energy of the system from .castep output</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -283,7 +280,7 @@ Can be obtained by split_castep</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="castep_elnes_parser.get_pa_energy_castep">
-<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">get_pa_energy_castep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">':ex'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#get_pa_energy_castep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.get_pa_energy_castep" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">get_pa_energy_castep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">':ex'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#get_pa_energy_castep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.get_pa_energy_castep" title="Permalink to this definition">#</a></dt>
 <dd><p>get the atomic energy of the pseudo atomic (pa) calculation from .castep output</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -305,7 +302,7 @@ Can be obtained by split_castep</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="castep_elnes_parser.get_smeared_spectrum">
-<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">get_smeared_spectrum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calc_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'case_elnes'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_origin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eigen_value'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_eV</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atomic_unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#get_smeared_spectrum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.get_smeared_spectrum" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">get_smeared_spectrum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calc_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'case_elnes'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_origin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eigen_value'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_eV</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atomic_unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#get_smeared_spectrum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.get_smeared_spectrum" title="Permalink to this definition">#</a></dt>
 <dd><p>get gaussian smeared spectra from a .bands file and a .eels_mat file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -344,7 +341,7 @@ case_elnes.bands    case_elnes.eels_mat
 
 <dl class="py function">
 <dt class="sig sig-object py" id="castep_elnes_parser.get_spectrum">
-<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">get_spectrum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calc_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'case_elnes'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_eV</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atomic_unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#get_spectrum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.get_spectrum" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">get_spectrum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calc_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'case_elnes'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_eV</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atomic_unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#get_spectrum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.get_spectrum" title="Permalink to this definition">#</a></dt>
 <dd><p>get primitive spectral data from a .bands file and a .eels_mat file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -366,7 +363,7 @@ case_elnes.bands    case_elnes.eels_mat
 
 <dl class="py function">
 <dt class="sig sig-object py" id="castep_elnes_parser.read_bands">
-<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">read_bands</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_eV</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#read_bands"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.read_bands" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">read_bands</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_eV</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#read_bands"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.read_bands" title="Permalink to this definition">#</a></dt>
 <dd><p>extract data from .bands file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -386,7 +383,7 @@ case_elnes.bands    case_elnes.eels_mat
 
 <dl class="py function">
 <dt class="sig sig-object py" id="castep_elnes_parser.read_bin_data">
-<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">read_bin_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_byte</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header_byte</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">footer_byte</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#read_bin_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.read_bin_data" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">read_bin_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_byte</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header_byte</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">footer_byte</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#read_bin_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.read_bin_data" title="Permalink to this definition">#</a></dt>
 <dd><p>read data from binary file
 This function reads a binary chunk from current position.</p>
 <dl class="field-list simple">
@@ -410,7 +407,7 @@ This function reads a binary chunk from current position.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="castep_elnes_parser.read_eels_mat">
-<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">read_eels_mat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#read_eels_mat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.read_eels_mat" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">read_eels_mat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#read_eels_mat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.read_eels_mat" title="Permalink to this definition">#</a></dt>
 <dd><p>extract data from .eels_mat file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -436,7 +433,7 @@ This function reads a binary chunk from current position.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="castep_elnes_parser.split_castep">
-<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">split_castep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#split_castep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.split_castep" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">castep_elnes_parser.</span></span><span class="sig-name descname"><span class="pre">split_castep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/castep_elnes_parser.html#split_castep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#castep_elnes_parser.split_castep" title="Permalink to this definition">#</a></dt>
 <dd><p>Split .castep file into each calculation</p>
 <p>Running CASTEP several times yields a single .castep file with concatenated output.
 This function splits the outputs into a list of each calculation run.</p>
@@ -476,8 +473,9 @@ This function splits the outputs into a list of each calculation run.</p>
       </div>
     </div>
   
-    <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-  <footer class="footer mt-5 mt-md-0">
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
@@ -488,7 +486,7 @@ This function splits the outputs into a list of each calculation run.</p>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
 </p>
     </div>
     
