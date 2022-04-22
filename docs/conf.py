@@ -12,20 +12,23 @@
 #
 import os
 import sys
+import configparser
 sys.path.insert(0, os.path.abspath('.'))
-
+from castep_elnes_parser import __version__
+config = configparser.ConfigParser()
+config.read('../setup.cfg')
 
 # -- Project information -----------------------------------------------------
 
 project = 'CASTEP ELNES Parser'
 copyright = '2021, kiyou & nmdl-mizo'
-author = 'kiyou, nmdl-mizo'
+author = config['metadata']['author']
 
 # The short X.Y version
-version = '1.0.0'
+version = '.'.join(__version__.split('.')[:2])
 
 # The full version, including alpha/beta/rc tags
-release = '1.0.0'
+release = __version__
 
 
 # -- General configuration ---------------------------------------------------
