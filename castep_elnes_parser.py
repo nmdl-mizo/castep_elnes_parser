@@ -503,12 +503,13 @@ def get_smeared_spectrum(energies, sigma=0.3, calc_dir=".", seed_name="case_elne
         [
             [
                 [
-                    kw * np.array(
+                    kw * np.sum(
                         [
-                            gaussian(energies, e, w, sigma)
-                            for e, w in zip(spectrum["eigenvalues"][i_kp, i_spin] - e_origin_value, spectrum["dsf"][i_kp, i_spin, i_proj, :, i_ra])
-                            if e >= 0.
-                        ]
+                            gaussian(energies, en, w, sigma)
+                            for en, w in zip(spectrum["eigenvalues"][i_kp, i_spin] - e_origin_value, spectrum["dsf"][i_kp, i_spin, i_proj, :, i_ra])
+                            if en >= 0.
+                        ],
+                        axis=0
                     )
                     for i_kp, kw in enumerate(spectrum["kpoint_weights"])
                 ]
@@ -518,6 +519,6 @@ def get_smeared_spectrum(energies, sigma=0.3, calc_dir=".", seed_name="case_elne
         ]
         for i_proj in range(spectrum["tot_core_projectors"])
     ]
-    sp = np.sum(np.array(sp), axis=(2, 3, 4))
+    sp = np.sum(np.array(sp), axis=(2, 3))
     sp *= 2. / spectrum["num_spins"] # consider spin multiplicity
     return sp
