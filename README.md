@@ -58,7 +58,7 @@ case_elnes.bands    case_elnes.eels_mat
 >>> import castep_elnes_parser as cep
 >>> # calculate gaussian smeared spectra of Gaussian sigma 0.3 eV
 >>> energies = np.arange(-4.999, 30.002, 0.001) # make an array for energies with a desired range and resolution
->>> sp = get_smeared_spectrum(energies=energies, sigma=0.3, calc_dir=".", seed_name="case_elnes") # parse and make spectra by gaussian smearing with sigma
+>>> sp = cep.get_smeared_spectrum(energies=energies, sigma=0.3, calc_dir=".", seed_name="case_elnes") # parse and make spectra by gaussian smearing with sigma
 >>> fig, ax = plt.subplots(1)
 >>> ax.set_xlabel("Energy (eV)")
 >>> ax.set_ylabel("Intensity (arb. u.)")
