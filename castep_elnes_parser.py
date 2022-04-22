@@ -26,12 +26,6 @@ import re
 import struct
 import numpy as np
 
-# Semantic Versioning
-# https://semver.org/
-# (MAJOR, MINOR, PATCH)
-VERSION = (1, 0, 1)
-__version__ = '.'.join(map(str, VERSION))
-
 def split_castep(filename):
     """
     Split .castep file into each calculation
