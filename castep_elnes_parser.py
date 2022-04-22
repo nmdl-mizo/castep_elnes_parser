@@ -491,7 +491,7 @@ def get_smeared_spectrum(energies, sigma=0.3, calc_dir=".", seed_name="case_elne
         e_origin_value = np.min(
             [
                 [
-                    ev[int((ne * spectrum["num_spins"] - 1) // 2)]
+                    ev[int(ne // (2 / spectrum["num_spins"]))]
                     for ev, ne in zip(ev_k, spectrum["num_electrons"])
                 ]
                 for ev_k in spectrum["eigenvalues"]
