@@ -26,7 +26,6 @@ import re
 import struct
 import numpy as np
 
-
 def split_castep(filename):
     """
     Split .castep file into each calculation
