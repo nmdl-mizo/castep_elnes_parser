@@ -41,7 +41,7 @@ The label of the site of interest can be specified by `element` and `suffix`.
 ``` python
 >>> !ls . # prepare two {seed_name}.castep files for ground state and excitated state
 case_gs.castep    case.castep
->>> import castep_elnes_parser as cep
+>>> import ceparser as cep
 >>> # extract energies and calculate excitation energy for a site labelled as "C:ex"
 >>> energies = cep.get_energies(filename_gs="./case_gs.castep", filename_ex="./case.castep", element="C", suffix=":ex")
 ```
@@ -55,7 +55,7 @@ This script can form spectra from a pair of {seed_name}.bands and {seed_name}.ee
 case_elnes.bands    case_elnes.eels_mat
 >>> import numpy as np
 >>> import matplotlib.pyplot as plt
->>> import castep_elnes_parser as cep
+>>> import ceparser as cep
 >>> # calculate gaussian smeared spectra of Gaussian sigma 0.3 eV
 >>> energies = np.arange(-4.999, 30.002, 0.001) # make an array for energies with a desired range and resolution
 >>> sp = cep.get_smeared_spectrum(energies=energies, sigma=0.3, calc_dir=".", seed_name="case_elnes") # parse and make spectra by gaussian smearing with sigma
