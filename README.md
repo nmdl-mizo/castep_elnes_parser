@@ -1,6 +1,7 @@
 # CASTEP ELNES Parser
 
 [![DOI](https://zenodo.org/badge/433655152.svg)](https://zenodo.org/badge/latestdoi/433655152)
+[![GitHub Pages](https://github.com/nmdl-mizo/castep_elnes_parser/actions/workflows/gh-pages.yml/badge.svg?branch=main)](https://github.com/nmdl-mizo/castep_elnes_parser/actions/workflows/gh-pages.yml)
 
 A simple python script for parsing [CASTEP](http://www.castep.org/) output files especially for ELNES calculations.
 
