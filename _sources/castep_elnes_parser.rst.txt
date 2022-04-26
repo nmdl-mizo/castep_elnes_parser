@@ -1,7 +1,7 @@
 castep\_elnes\_parser module
 ============================
 
-.. automodule:: castep_elnes_parser
+.. automodule:: ceparser
    :members:
    :undoc-members:
    :show-inheritance:
