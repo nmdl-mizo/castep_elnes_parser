@@ -25,6 +25,8 @@ import os
 import re
 import struct
 import numpy as np
+import importlib_metadata
+__version__ = importlib_metadata.version('castep_elnes_parser')
 
 def split_castep(filename):
     """
