@@ -1,3 +1,6 @@
+ipykernel
+numpy
+matplotlib
 sphinx
 # sphinx_rtd_theme
 pydata-sphinx-theme
