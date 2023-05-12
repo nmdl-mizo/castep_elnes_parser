@@ -523,3 +523,61 @@ def get_smeared_spectrum(energies, sigma=0.3, calc_dir=".", seed_name="case_elne
     sp = np.sum(np.array(sp), axis=(2, 3))
     sp *= 2. / spectrum["num_spins"] # consider spin multiplicity
     return sp
+
+
+def get_directional_tm(tm, e_vec):
+    """
+    Calculate transition matrix element for a specific polarization direction
+
+    Parameters
+    --------
+    tm : numpy array
+        transition matrix
+    e_vec : iterable
+        3 dimensional polarization vector
+
+    Returns
+    --------
+    s : numpy array
+        numpy array of averaged value of function f on a unit sphere
+    """
+    return np.square(np.abs(np.einsum("ijklm,m->ijkl", tm, e_vec)))
+
+
+def average_on_unit_sphere(f, n_theta=100, n_phi=200, cartesian=True):
+    """
+    get average value of a function on a 3D unit sphere
+
+    Parameters
+    --------
+    f : function
+        function to be averaged on a 3D unit sphere.
+        The argument of the function must be list of coordinates in cartesian or polar coordinates.
+        i.e. f([x, y, z]) or f([theta, phi])
+    n_theta : int, default 100
+        number of split in polar angle theta
+    n_phi : int, default 200
+        number of split in azimuthal angle phi
+    cartesian : bool, default "True"
+        whether the arguments of function f is
+        in cartesian coordinates (True) or polar coordinates(False).
+
+    Returns
+    --------
+    s : numpy array
+        numpy array of averaged value of function f on a unit sphere
+    """
+    theta_list = np.linspace(0., np.pi, n_theta)
+    phi_list = np.linspace(0., 2 * np.pi, n_phi)
+    dtheta = np.pi / n_theta
+    dphi = 2 * np.pi / n_phi
+    s = 0.
+    for theta in theta_list:
+        for phi in phi_list:
+            if cartesian:
+                args = [np.cos(theta), np.sin(theta) * np.cos(phi), np.sin(theta) * np.sin(phi)]
+            else:
+                args = [theta, phi]
+            s += f(args) * np.sin(theta) * dtheta * dphi
+    s /= 4. * np.pi # scale to get average
+    return s
