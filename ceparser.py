@@ -542,13 +542,9 @@ def get_smeared_spectrum(energies, sigma=0.3, calc_dir=".", seed_name="case_elne
                             gaussian(energies, en, w, sigma)
                             for en, w in zip(
                                 spectrum["eigenvalues"][i_kp, i_spin] - e_origin_value,
-                                np.square(
-                                    np.abs(
-                                        get_directional_tm(
-                                            spectrum["transition_matrix"],
-                                            e_vec
-                                        )
-                                    )
+                                get_directional_tm(
+                                    spectrum["transition_matrix"],
+                                    e_vec
                                 )[i_kp, i_spin, i_proj, :]
                             )
                             if en >= 0.
