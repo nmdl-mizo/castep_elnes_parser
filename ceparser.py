@@ -400,7 +400,7 @@ def get_spectrum(calc_dir=".", seed_name="case_elnes", output_eV=True, atomic_un
     output_eV : bool, default True
         whether output energy in eV (True) or hartree (False)
     atomic_unit : bool, default False
-        whether output dynamical structure factor in the unit of Bohr radius^2 (True) or angstrom^2 (False).
+        whether output transition matrix in the unit of Bohr radius (True) or angstrom (False).
 
     Returns
     --------
@@ -408,9 +408,9 @@ def get_spectrum(calc_dir=".", seed_name="case_elnes", output_eV=True, atomic_un
         a dictionary of the spectral data
     """
     eels_mat_dict = read_eels_mat(os.path.join(calc_dir, f"{seed_name}.eels_mat"))
-    en = np.square(np.abs(eels_mat_dict["transition_matrix"]))
+    tm = eels_mat_dict["transition_matrix"]
     if not atomic_unit:
-        en *= 0.529177210903**2 # Bohr radius^-2 to Angstrom^-2
+        tm *= 0.529177210903  # Bohr radius^-2 to Angstrom^-2
     bands_dict = read_bands(os.path.join(calc_dir, f"{seed_name}.bands"), output_eV)
     spectrum_dict = {
         "eigenvalues": bands_dict["eigenvalues"],
@@ -419,7 +419,7 @@ def get_spectrum(calc_dir=".", seed_name="case_elnes", output_eV=True, atomic_un
         "kpoint_weights": bands_dict["kpoint_weights"],
         "num_spins": bands_dict["num_spins"],
         "tot_core_projectors": eels_mat_dict["tot_core_projectors"],
-        "dsf":en
+        "transition_matrix": tm
     }
     return spectrum_dict
 
@@ -447,7 +447,8 @@ def gaussian(x, c, w, s):
     return w / (np.sqrt(2. * np.pi) * s) * np.exp(-((x - c) / s)**2 / 2.)
 
 
-def get_smeared_spectrum(energies, sigma=0.3, calc_dir=".", seed_name="case_elnes", e_origin="eigen_value", output_eV=True, atomic_unit=False):
+def get_smeared_spectrum(energies, sigma=0.3, calc_dir=".", seed_name="case_elnes",
+                         e_origin="eigen_value", output_eV=True, atomic_unit=False):
     """
     get gaussian smeared spectra from a .bands file and a .eels_mat file
 
@@ -507,7 +508,10 @@ def get_smeared_spectrum(energies, sigma=0.3, calc_dir=".", seed_name="case_elne
                     kw * np.sum(
                         [
                             gaussian(energies, en, w, sigma)
-                            for en, w in zip(spectrum["eigenvalues"][i_kp, i_spin] - e_origin_value, spectrum["dsf"][i_kp, i_spin, i_proj, :, i_ra])
+                            for en, w in zip(
+                                spectrum["eigenvalues"][i_kp, i_spin] - e_origin_value,
+                                np.square(np.abs(spectrum["transition_matrix"]))[i_kp, i_spin, i_proj, :, i_ra]
+                            )
                             if en >= 0.
                         ],
                         axis=0
