@@ -601,8 +601,8 @@ def get_averaged_tm(tm, n_theta=100, n_phi=200):
     """
     average_on_unit_sphere(
         lambda e_vec: get_directional_tm(tm, e_vec),
-        n_theta=100,
-        n_phi=200,
+        n_theta=n_theta,
+        n_phi=n_phi,
         cartesian=True
     )
 
