@@ -563,7 +563,7 @@ def get_smeared_spectrum(energies, sigma=0.3, calc_dir=".", seed_name="case_elne
             ]
             for i_proj in range(spectrum["tot_core_projectors"])
         ]
-        sp = np.sum(np.array(sp), axis=(1, 2))
+        sp = np.sum(np.array(sp), axis=(2, 3))
         sp *= 2. / spectrum["num_spins"]  # consider spin multiplicity
     return sp
 
