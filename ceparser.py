@@ -538,26 +538,28 @@ def get_smeared_spectrum(energies, sigma=0.3, calc_dir=".", seed_name="case_elne
         sp = [
             [
                 [
-                    kw * np.sum(
-                        [
-                            gaussian(energies, en, w, sigma)
-                            for en, w in zip(
-                                spectrum["eigenvalues"][i_kp, i_spin] - e_origin_value,
-                                np.square(np.abs([
-                                    get_directional_tm(
-                                        spectrum["transition_matrix"],
-                                        e_vec
-                                    )[i_kp, i_spin, i_proj, :]
-                                    for e_vec in e_vec_list
-                                ])).T
-                            )
-                            if en >= 0.
-                        ],
-                        axis=0
-                    )
-                    for i_kp, kw in enumerate(spectrum["kpoint_weights"])
+                    [
+                        kw * np.sum(
+                            [
+                                gaussian(energies, en, w, sigma)
+                                for en, w in zip(
+                                    spectrum["eigenvalues"][i_kp, i_spin] - e_origin_value,
+                                    np.square(np.abs([
+                                        get_directional_tm(
+                                            spectrum["transition_matrix"],
+                                            e_vec
+                                        )[i_kp, i_spin, i_proj, :]
+                                    ]))
+                                )
+                                if en >= 0.
+                            ],
+                            axis=0
+                        )
+                        for i_kp, kw in enumerate(spectrum["kpoint_weights"])
+                    ]
+                    for i_spin in range(spectrum["num_spins"])
                 ]
-                for i_spin in range(spectrum["num_spins"])
+                for e_vec in e_vec_list
             ]
             for i_proj in range(spectrum["tot_core_projectors"])
         ]
