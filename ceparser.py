@@ -549,7 +549,7 @@ def get_smeared_spectrum(energies, sigma=0.3, calc_dir=".", seed_name="case_elne
                                             spectrum["transition_matrix"],
                                             e_vec
                                         )[i_kp, i_spin, i_proj, :]
-                                    ]))
+                                    ])).T
                                 )
                                 if en >= 0.
                             ],
