@@ -581,6 +581,32 @@ def get_directional_tm(tm, e_vec):
     return np.square(np.abs(np.einsum("ijklm,m->ijkl", tm, e_vec)))
 
 
+def get_averaged_tm(tm, n_theta=100, n_phi=200):
+    """
+    Calculate averaged transition matrix element
+
+    Parameters
+    --------
+    tm : numpy array
+        transition matrix
+    n_theta : int, default 100
+        number of split in polar angle theta
+    n_phi : int, default 200
+        number of split in azimuthal angle phi
+
+    Returns
+    --------
+    tm_e_vec : numpy array
+        averaged transition matrix
+    """
+    average_on_unit_sphere(
+        lambda e_vec: get_directional_tm(tm, e_vec),
+        n_theta=100,
+        n_phi=200,
+        cartesian=True
+    )
+
+
 def average_on_unit_sphere(f, n_theta=100, n_phi=200, cartesian=True):
     """
     get average value of a function on a 3D unit sphere
