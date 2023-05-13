@@ -584,7 +584,7 @@ def get_directional_tm(tm, e_vec):
     tm_e_vec : numpy array
         transition matrix for the given e_vec
     """
-    return np.square(np.abs(np.einsum("ijklm,m->ijkl", tm, e_vec)))
+    return np.einsum("ijklm,m->ijkl", tm, e_vec)
 
 
 def get_averaged_spectra(tm, n_theta=100, n_phi=200):
