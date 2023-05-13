@@ -448,7 +448,7 @@ def gaussian(x, c, w, s):
 
 
 def get_smeared_spectrum(energies, sigma=0.3, calc_dir=".", seed_name="case_elnes",
-                         e_vec=None, e_origin="eigen_value", output_eV=True, atomic_unit=False):
+                         e_vec_list=np.eye(3), e_origin="eigen_value", output_eV=True, atomic_unit=False):
     """
     get gaussian smeared spectra from a .bands file and a .eels_mat file
 
@@ -462,8 +462,9 @@ def get_smeared_spectrum(energies, sigma=0.3, calc_dir=".", seed_name="case_elne
         path to the directory containing .bands and .eels_mat
     seed_name : str, default "case_elnes"
         seed name of the calculation
-    e_vec : None or list, default None
+    e_vec_list : None or list, default None
         3 dimensional polarization vector. If specified, calculate a spectrum for the polarization direction.
+        if None, return spectra for polarization along x, y, z directions
     e_origin : str, default "eigen_value"
         set energy origin
     output_eV : bool, default True
@@ -503,7 +504,7 @@ def get_smeared_spectrum(energies, sigma=0.3, calc_dir=".", seed_name="case_elne
         )
     elif e_origin == "efermi":
         e_origin_value = spectrum["efermi"]
-    if e_vec is None:
+    if e_vec_list is None:
         sp = [
             [
                 [
@@ -542,10 +543,13 @@ def get_smeared_spectrum(energies, sigma=0.3, calc_dir=".", seed_name="case_elne
                             gaussian(energies, en, w, sigma)
                             for en, w in zip(
                                 spectrum["eigenvalues"][i_kp, i_spin] - e_origin_value,
-                                get_directional_tm(
-                                    spectrum["transition_matrix"],
-                                    e_vec
-                                )[i_kp, i_spin, i_proj, :]
+                                [
+                                    get_directional_tm(
+                                        spectrum["transition_matrix"],
+                                        e_vec
+                                    )[i_kp, i_spin, i_proj, :]
+                                    for e_vec in e_vec_list
+                                ]
                             )
                             if en >= 0.
                         ],
