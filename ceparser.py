@@ -581,9 +581,9 @@ def get_directional_tm(tm, e_vec):
     return np.square(np.abs(np.einsum("ijklm,m->ijkl", tm, e_vec)))
 
 
-def get_averaged_tm(tm, n_theta=100, n_phi=200):
+def get_averaged_spectra(tm, n_theta=100, n_phi=200):
     """
-    Calculate averaged transition matrix element
+    Calculate directionally averaged spectra from matrix element
 
     Parameters
     --------
@@ -596,11 +596,11 @@ def get_averaged_tm(tm, n_theta=100, n_phi=200):
 
     Returns
     --------
-    tm_e_vec : numpy array
-        averaged transition matrix
+    averaged_spectra : numpy array
+        directionally averaged spectra
     """
-    average_on_unit_sphere(
-        lambda e_vec: get_directional_tm(tm, e_vec),
+    return average_on_unit_sphere(
+        lambda e_vec: np.square(np.abs(get_directional_tm(tm, e_vec))),
         n_theta=n_theta,
         n_phi=n_phi,
         cartesian=True
