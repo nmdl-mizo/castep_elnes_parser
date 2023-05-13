@@ -575,8 +575,8 @@ def get_directional_tm(tm, e_vec):
 
     Returns
     --------
-    s : numpy array
-        numpy array of averaged value of function f on a unit sphere
+    tm_e_vec : numpy array
+        transition matrix for the given e_vec
     """
     return np.square(np.abs(np.einsum("ijklm,m->ijkl", tm, e_vec)))
 
