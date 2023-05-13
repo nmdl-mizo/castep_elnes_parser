@@ -448,7 +448,8 @@ def gaussian(x, c, w, s):
 
 
 def get_smeared_spectrum(energies, sigma=0.3, calc_dir=".", seed_name="case_elnes",
-                         e_vec_list=np.eye(3), e_origin="eigen_value", output_eV=True, atomic_unit=False):
+                         e_vec_list=np.eye(3), n_theta=100, n_phi=200,
+                         e_origin="eigen_value", output_eV=True, atomic_unit=False):
     """
     get gaussian smeared spectra from a .bands file and a .eels_mat file
 
@@ -464,7 +465,12 @@ def get_smeared_spectrum(energies, sigma=0.3, calc_dir=".", seed_name="case_elne
         seed name of the calculation
     e_vec_list : None or list, default None
         3 dimensional polarization vector. If specified, calculate a spectrum for the polarization direction.
-        if None, return spectra for polarization along x, y, z directions
+        if not specified, np.eye(3) is set as default and return spectra for polarization along x, y, z directions
+        if None, return spectra averaged over all directions
+    n_theta : int, default 100
+        number of split in polar angle theta for averaged spectra
+    n_phi : int, default 200
+        number of split in azimuthal angle phi for averaged spectra
     e_origin : str, default "eigen_value"
         set energy origin
     output_eV : bool, default True
@@ -508,31 +514,31 @@ def get_smeared_spectrum(energies, sigma=0.3, calc_dir=".", seed_name="case_elne
         sp = [
             [
                 [
-                    [
-                        kw * np.sum(
-                            [
-                                gaussian(energies, en, w, sigma)
-                                for en, w in zip(
-                                    spectrum["eigenvalues"][i_kp, i_spin] - e_origin_value,
-                                    np.square(
-                                        np.abs(
-                                            spectrum["transition_matrix"]
-                                        )
-                                    )[i_kp, i_spin, i_proj, :, i_ra]
-                                )
-                                if en >= 0.
-                            ],
-                            axis=0
-                        )
-                        for i_kp, kw in enumerate(spectrum["kpoint_weights"])
-                    ]
-                    for i_spin in range(spectrum["num_spins"])
+                    kw * np.sum(
+                        [
+                            gaussian(energies, en, w, sigma)
+                            for en, w in zip(
+                                spectrum["eigenvalues"][i_kp, i_spin] - e_origin_value,
+                                get_averaged_spectra(
+                                    spectrum["transition_matrix"],
+                                    n_theta=n_theta,
+                                    n_phi=n_phi,
+                                )[i_kp, i_spin, i_proj, :]
+                                # np.square(np.abs(
+                                #     spectrum["transition_matrix"]
+                                # ))[i_kp, i_spin, i_proj, :]
+                            )
+                            if en >= 0.
+                        ],
+                        axis=0
+                    )
+                    for i_kp, kw in enumerate(spectrum["kpoint_weights"])
                 ]
-                for i_ra in range(3)
+                for i_spin in range(spectrum["num_spins"])
             ]
             for i_proj in range(spectrum["tot_core_projectors"])
         ]
-        sp = np.sum(np.array(sp), axis=(2, 3))
+        sp = np.sum(np.array(sp), axis=(1, 2))
         sp *= 2. / spectrum["num_spins"]  # consider spin multiplicity
     else:
         sp = [
